@@ -16,11 +16,6 @@ int main(){
 
   printf("answer=%d\n",value);
 
-  int j=0;
-  printf("j=%d\n",j);
-  printf("j=%d\n",j++);
-  printf("j=%d\n",++j);
-
 }
 
 

@@ -2,27 +2,21 @@
 #include <stdio.h>
 
 int atoi(char s[]);
-
-
+int getyear(void);
 
 int main(){
-  char c,line[50];
   int year;
 
-  for(int i=0; i<50 && (c=getchar()) >= '0' && c <= '9'; ++i)
-    line[i]=c; //load number string from keyboard and put in line[]
-
-  year=atoi(line); //converts the string in line[] to a number
+  year=getyear();
 
   if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
     printf("%d is a leap year\n",year);
   else
     printf("%d is not a leap year\n",year);
 
-
 }
 
-//converts character string to number
+//function atoi(): converts character string to number
 int atoi(char s[]){
   int i, n;
 
@@ -31,4 +25,14 @@ int atoi(char s[]){
     n=10*n+(s[i]-'0');
 
     return n;
+}
+
+//function getyear(): get year value from keyboard
+int getyear(void){
+  char c, line[50];
+
+  for(int i=0; i<50 && (c=getchar()) >= '0' && c <= '9'; ++i)
+    line[i]=c; //load number string from keyboard and put in line[]
+
+  return atoi(line);
 }

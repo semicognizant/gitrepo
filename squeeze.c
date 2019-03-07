@@ -2,13 +2,13 @@
 #include<stdio.h>
 
 void squeeze(char s[], char c);
-//void replace(char s[], char c, char d);
+void replace(char s[], char c, char d);
 
 int main(){
 
   char string[] = "I love cats!";
   printf("%s\n",string);
-  squeeze(string,'c');
+  replace(string,'c','h');
   printf("%s\n",string);
 
 
@@ -25,12 +25,14 @@ void squeeze(char s[], char c){
     s[j]='\0';
 }
 
-/*
+
 void replace(char s[], char c, char d){
   int i,j;
 
-  for (i=j=0; s[i]) != '\0'; i++)
+  for (i=j=0; s[i] != '\0'; i++)
     if (s[i] != c)
-      s[j++]
+      s[j++] = s[i];
+    else
+      s[j++] = d;
+
 }
-*/

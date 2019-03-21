@@ -70,7 +70,7 @@ void push(double f)
 
 
 
-/* pop: pop and return top value from stack */
+/* pop:   return top value from stack */
 double pop(void)
 {
       if (sp > 0)
@@ -97,6 +97,9 @@ int getop(char s[]){
     return c;
   i=0;
   if (isdigit(c))
+    while (isdigit(s[++i]=c=getch()))
+      ;
+  if (c=='.')
     while (isdigit(s[++i]=c=getch()))
       ;
   s[i]='\0';

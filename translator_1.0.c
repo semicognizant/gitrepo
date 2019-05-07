@@ -67,23 +67,22 @@ int main()
   int len;
   char input[MAXLINE];
 
-
-  printf("Enter a phrase to be translated: ");
-  mygetline(input,MAXLINE);
-  int done = FALSE;
-  for (int i = 0; i<entry_num; i++){
-    if (mystringcmp(input,dictionary[i].English)){
-      printf("English: %s",dictionary[i].English);
-      printf("Espanol: %s",dictionary[i].Spanish);
-      printf("Francais: %s",dictionary[i].French);
-      done = TRUE;
+  while (TRUE){
+    printf("Enter a phrase to be translated: ");
+    mygetline(input,MAXLINE);
+    int done = FALSE;
+    for (int i = 0; i<entry_num; i++){
+      if (mystringcmp(input,dictionary[i].English)){
+        printf("English: %s",dictionary[i].English);
+        printf("Espanol: %s",dictionary[i].Spanish);
+        printf("Francais: %s",dictionary[i].French);
+        done = TRUE;
+      }
     }
+    if (!done)
+      printf("I do not know that phrase!\n");
   }
-  if (!done)
-    printf("I do not know that phrase!\n");
-
 }
-
 
 
 /* mygetline: read a line into s, return length */

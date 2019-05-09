@@ -1,15 +1,14 @@
 /* translator_0.1.c */
 
 #include <stdio.h>
-#include <fcntl.h>
+//#include <fcntl.h>
 
 #define MAXLINE 250      /* maximum input line size */
 
-int mygetline(char line[], int maxline);
-int mystringcmp( char *s, char *t);
+void mygetline(char line[], int maxline);
+int mystringcmp(char *s, char *t);
+//char * mygetfileline(FILE *fp_in);
 
-
-/* print longest input line */
 int main()
 {
   struct entry {
@@ -19,6 +18,12 @@ int main()
   };
 
   struct entry dictionary[10];
+
+  FILE *fp;
+  //fp= open("phrases.txt","r");
+
+  //fp= close();
+
   dictionary[0].English="good morning";
   dictionary[0].Spanish="buenos dias";
   dictionary[0].French="bonjour";
@@ -29,36 +34,46 @@ int main()
   char input[MAXLINE];
 
   printf("Enter a phrase to be translated: ");
-  len=mygetline(input,MAXLINE);
-  printf("The line you entered is: ");
-  printf("%s",input);
-  if (mystringcmp(input,"good morning"))
-    printf("The lines are the same.\n");
+  mygetline(input,MAXLINE);
+  //printf("The line you entered is: ");
+  //printf("%s\n",input);
+  if (!mystringcmp(input,dictionary[0].English)){
+    printf("Espanol: %s\n",dictionary[0].Spanish);
+    printf("Francais: %s\n",dictionary[0].French);
+  }
   else
-    printf("The lines are different.\n");
+    printf("I do not know that phrase!\n");
+
 
 }
 
 /* mygetline: read a line into s, return length */
-int mygetline(char s[], int lim)
+void mygetline(char s[], int lim)
 {
     int c, i;
 
-    for (i=0; i<lim-1 && (c=getchar())!=EOF && c!='\n'; ++i)
+    for (i=0; i<lim-1 && (c=getchar()) !='\n'; ++i){
+        //printf("getting=%c at %d\n",c,i);
         s[i] = c;
-    if (c == '\n') {
-        s[i] = c;
-        ++i;
-    }
-    s[i] = '\0';
-    return i;
+      }
+    ++i;
+    s[i] = c;
 }
 
 
 /* mystringcmp: compare strings */
 int mystringcmp(char *s, char *t){
-  for (; *s==*t; s++,t++)
-    if (*s=='\0')
+  for (; *s==*t; s++,t++);
+    //printf("%c=?=%c\n",*s,*t);
+  if (*s=='\n'){
+      //printf("returning zero\n");
       return 0;
+    }
+  //printf("returning %d\n", *s-*t);
   return *s-*t;
 }
+
+/* getline: retrieve a line from the file
+char * mygetfileline(FILE *fp_in){
+
+} */

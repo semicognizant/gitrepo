@@ -1,5 +1,7 @@
-4
+9
 
+dummy#
+dummy#
 dummy#
 dummy#
 dummy#
@@ -7,11 +9,47 @@ dummy#
 good morning#
 buenos dias#
 bonjour#
+kalimera#
+dobriy utra#
+
+good afternoon#
+buenas tardes#
+bonne après-midi#
+kalispera#
+dobriy dyen#
 
 see you later#
 nos vemos las tardes#
 a plus tard#
+ta leme#
+da svidaniya#
 
-other english phrase#
-Spanish phrase#
-French phrases#
+how are you?#
+como estas?#
+comment vas-tu?#
+ti kanis?#
+kak dyela?#
+
+how's it going?#
+que pasa?#
+comment ça va?#
+pos pas?#
+kak zhyzn?#
+
+I am doing well, thank you#
+muy bien, gracias#
+je vais bien merci#
+ime kala, efkharisto#
+ochyen khorosho, spasiba#
+
+not so well#
+pas si bien#
+no muy bien#
+den ime kala#
+nye khorosho#
+
+Very bad. I am sick#
+muy malo. soy enfermo#
+très mal. je suis malade#
+poli kakos. ime arrostos#
+ochyen plokha. ya bolyen#

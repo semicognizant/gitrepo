@@ -22,9 +22,11 @@ int main()
     char *English;
     char *Spanish;
     char *French;
+    char *Greek;
+    char *Russian;
   };
 
-  struct entry dictionary[10];
+  struct entry dictionary[25];
   int entry_num;
   char *string_in = malloc(sizeof(100));
 
@@ -57,6 +59,14 @@ int main()
     mystringcopy(dictionary[j].French,string_in);
 
     fgets(string_in,MAXLINE,fp);
+    dictionary[j].Greek = malloc(100);
+    mystringcopy(dictionary[j].Greek,string_in);
+
+    fgets(string_in,MAXLINE,fp);
+    dictionary[j].Russian = malloc(100);
+    mystringcopy(dictionary[j].Russian,string_in);
+
+    fgets(string_in,MAXLINE,fp);
   }
 
   fclose(fp);
@@ -76,6 +86,8 @@ int main()
         printf("English: %s",dictionary[i].English);
         printf("Espanol: %s",dictionary[i].Spanish);
         printf("Francais: %s",dictionary[i].French);
+        printf("Ellinika: %s",dictionary[i].Greek);
+        printf("Russkiy: %s",dictionary[i].Russian);
         done = TRUE;
       }
     }
@@ -91,10 +103,8 @@ void mygetline(char s[], int lim)
     int c, i;
 
     for (i=0; i<lim-1 && (c=getchar()) !='\n'; ++i){
-        //printf("getting=%c at %d\n",c,i);
         s[i] = c;
       }
-    //++i;
     s[i] = '\n';
 }
 
@@ -107,13 +117,13 @@ int mystringcmp(char *s, char *t){
   //printf("Comparing %s to %s\n",s,t);
   int done=FALSE,same=FALSE;
   for (; *s==*t; s++, t++){
-    //printf("%d=?=%d and %c=?=%c",*s,*t,*s,*t);
+    //printf("%d=?=%d and %c=?=%c\n",*s,*t,*s,*t);
         if (*s=='\n'){
-          //printf("returning true\n");
+          //printf("mystringcmp returning true\n");
           return TRUE;
         }
     }
-  //printf("returning false\n");
+  //printf("mystringcmp returning false\n");
   return FALSE;
 }
 

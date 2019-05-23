@@ -74,26 +74,30 @@ int main()
 
 
 /* main program loop */
-  int len;
+  int len, finished;
   char input[MAXLINE];
 
-  while (TRUE){
-    printf("Enter a phrase to be translated: ");
-    mygetline(input,MAXLINE);
+  while (!finished){
+    printf("Enter a phrase to be translated (type DONE# to exit): ");
+    mygetline(input,MAXLINE);  //gets user data and loads string into input
     int done = FALSE;
-    for (int i = 0; i<entry_num; i++){
-      if (mystringcmp(input,dictionary[i].English)){
-        printf("English: %s",dictionary[i].English);
-        printf("Espanol: %s",dictionary[i].Spanish);
-        printf("Francais: %s",dictionary[i].French);
-        printf("Ellinika: %s",dictionary[i].Greek);
-        printf("Russkiy: %s",dictionary[i].Russian);
-        done = TRUE;
+    if(mystringcmp(input,"DONE#"))
+      finished = TRUE;
+    if (!finished){
+      for (int i = 0; i<entry_num; i++){
+        if (mystringcmp(input,dictionary[i].English)){ //comparing input to known phrase
+          printf("English: %s",dictionary[i].English);
+          printf("Espanol: %s",dictionary[i].Spanish);
+          printf("Francais: %s",dictionary[i].French);
+          printf("Ellinika: %s",dictionary[i].Greek);
+          printf("Russkiy: %s",dictionary[i].Russian);
+          done = TRUE;
+        }
+      }
+      if (!done)
+        printf("I do not know that phrase!\n");
       }
     }
-    if (!done)
-      printf("I do not know that phrase!\n");
-  }
 }
 
 
@@ -113,17 +117,17 @@ void mygetline(char s[], int lim)
 
 /* mystringcmp: compare strings */
 int mystringcmp(char *s, char *t){
-  //printf("Entering mystringcmp...\n");
-  //printf("Comparing %s to %s\n",s,t);
+  printf("Entering mystringcmp...\n");
+  printf("Comparing %s to %s\n",s,t);
   int done=FALSE,same=FALSE;
   for (; *s==*t; s++, t++){
-    //printf("%d=?=%d and %c=?=%c\n",*s,*t,*s,*t);
-        if (*s=='\n'){
-          //printf("mystringcmp returning true\n");
+    printf("%d=?=%d and %c=?=%c\n",*s,*t,*s,*t);
+        if (*s=='#'){
+          printf("mystringcmp returning true\n");
           return TRUE;
         }
     }
-  //printf("mystringcmp returning false\n");
+  printf("mystringcmp returning false\n");
   return FALSE;
 }
 

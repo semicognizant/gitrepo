@@ -74,7 +74,7 @@ int main()
 
 
 /* main program loop */
-  int len, finished;
+  int len, finished=FALSE;
   char input[MAXLINE];
 
   while (!finished){
@@ -83,10 +83,16 @@ int main()
     int done = FALSE;
     if(mystringcmp(input,"DONE!\n"))
       finished = TRUE;
+
+
+
     if (!finished){
       for (int i = 0; i<entry_num; i++){
         if (mystringcmp(input,dictionary[i].English)){ //comparing input to known phrase
+
+
           printf("English: %s",dictionary[i].English);
+          printf("Translates to:\n");
           printf("Espanol: %s",dictionary[i].Spanish);
           printf("Francais: %s",dictionary[i].French);
           printf("Ellinika: %s",dictionary[i].Greek);
@@ -98,6 +104,7 @@ int main()
         printf("I do not know that phrase!\n");
       }
     }
+    printf("See you later!\n");
 }
 
 

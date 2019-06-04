@@ -58,7 +58,7 @@ int len, finished;
 char input[MAXLINE];
 printf("1. English, 2. Espanol, 3. Francais, 4. Ellinika, 5. Russkiy ?:");
 mygetline(input,MAXLINE);
-if (mystringcmp("English",input))
+if (mystringcmp(input,"English"))
   language=1;
 if (mystringcmp(input,"Espanol"))
   language=2;
@@ -71,8 +71,10 @@ if (mystringcmp(input,"Russkiy"))
 
 printf("translating from language=%d\n",language);
 
-while (!finished){
 
+
+while (!finished){
+ if (language==1){
   printf("Enter a phrase to be translated (type DONE! to exit): ");
   mygetline(input,MAXLINE);  //gets user data and loads string into input
   int done = FALSE;
@@ -97,6 +99,60 @@ while (!finished){
   if (!done)
     printf("I do not know that phrase!\n");
   }
+ }
+ if (language==2){
+   printf("Introduzca una frase para traducir (escriba DONE! salir): ");
+   mygetline(input,MAXLINE);  //gets user data and loads string into input
+   int done = FALSE;
+   if(mystringcmp(input,"DONE!\n"))
+       finished = TRUE;
+   if (!finished){
+     for (int i = 0; i<entry_num; i++){
+       if (mystringcmp(input,dictionary[i].Spanish)){
+         printf("Introduce un idioma:");
+         mygetline(input,MAXLINE);
+         if (mystringcmp(input,"Ingles"))//comparing input to known phrase
+           printf("Englis: %s",dictionary[i].English);
+         if (mystringcmp(input,"Frances"))
+           printf("Francais: %s",dictionary[i].French);
+         if (mystringcmp(input,"Griego"))
+           printf("Ellinika: %s",dictionary[i].Greek);
+         if (mystringcmp(input,"Ruso"))
+           printf("Russkiy: %s",dictionary[i].Russian);
+         done = TRUE;
+         }
+       }
+   if (!done)
+     printf("I do not know that phrase!\n");
+   }
+  }
+  if (language==3){
+    printf("Entrez une phrase à traduire (tapez DONE! Pour sortir): ");
+    mygetline(input,MAXLINE);  //gets user data and loads string into input
+    int done = FALSE;
+    if(mystringcmp(input,"DONE!\n"))
+        finished = TRUE;
+    if (!finished){
+      for (int i = 0; i<entry_num; i++){
+        if (mystringcmp(input,dictionary[i].French)){
+          printf("Entrez une langue:");
+          mygetline(input,MAXLINE);
+          if (mystringcmp(input,"Anglais"))//comparing input to known phrase
+            printf("English: %s",dictionary[i].English);
+          if (mystringcmp(input,"Espanol"))
+            printf("Espanol: %s",dictionary[i].Spanish);
+          if (mystringcmp(input,"Grec"))
+            printf("Ellinika: %s",dictionary[i].Greek);
+          if (mystringcmp(input,"Russe"))
+            printf("Russkiy: %s",dictionary[i].Russian);
+          done = TRUE;
+          }
+        }
+    if (!done)
+      printf("I do not know that phrase!\n");
+    }
+   }
+
 }//end of while loop
 
 
@@ -118,6 +174,10 @@ for (i=0; i<lim-1 && (c=getchar()) !='\n'; ++i){
       }
     s[i] = '\n';
 }
+
+
+
+
 /* mystringcmp: compare strings */
 int mystringcmp(char *s, char *t){
   //printf("Entering mystringcmp...\n");

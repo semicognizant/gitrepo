@@ -45,9 +45,9 @@ double string_to_float(char s[]){
   if (s[i] == '+' || s[i] =='-')
   i++;
   for (val = 0.0; isdigit(s[i]); i++) // comment #3
-  val = 10.0 * val + (s[i] - '0'); // s[i] - ’0’ converts char value to decimal value
+    val = 10.0 * val + (s[i] - '0'); // s[i] - ’0’ converts char value to decimal value
   if (s[i] == '.')
-  i++;
+    i++;
   for (power = 1.0; isdigit(s[i]); i++){ // comment #4
     val = 10.0 * val + (s[i] - '0');
     power *= 10.0;
